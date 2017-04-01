@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html  style="width: 100%;height: 100%">
+<head>
+    <meta charset="utf-8">
+    <title>西安宏府集团</title>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="viewport" content="target-densitydpi=high-dpi,width=device-width"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+    <meta name="360-fullscreen" content="true"/>
+    <style>
+        body{
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+        }
+        body, canvas, div {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            /*-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
+        }
+
+    </style>
+	<script type="text/javascript" src="cocos2d-js-v3.3-lite.js" charset="UTF-8"></script>
+</head>
+<body style="padding:0; margin: 0;">
+<script>
+//    if(window.navigator.userAgent.indexOf("MicroMessenger") == -1){
+//        window.location.href="http://devcon.cocos.com/";
+//    }
+</script>
+<canvas id="gameCanvas" width="640" height="831"></canvas>
+
+<div class="hide">
+    <audio id="myAudio" src="http://www.dubox.org.img.800cdn.com/apps/hongfu/res/bg.mp3" preload="true" loop="true"></audio>
+</div>
+<script src="main.js"></script>
+<script src="WeixinApi.js"></script>
+<script>
+
+
+    // 微信分享的数据
+    window.wxData = {
+        "appId": "", // 服务号可以填写appId
+        "imgUrl": "http://1.dubox.sinaapp.com/hongfu2/res/weixin.jpg",
+        "link": "http://1.dubox.sinaapp.com/hongfu2/",
+        "desc": "已经不记得 多久没有跟家人在一起  聊天 吃饭",
+        "title": "春节了，早点回家"
+    };
+
+    WeixinApi.ready(function (Api) {
+        // 分享的回调
+        var wxCallbacks = {
+            ready: function () {
+			alert(wxData.imgUrl);
+            },
+
+            cancel: function (resp) {
+            },
+            fail: function (resp) {
+            },
+            confirm: function (resp) {
+            },
+            all: function (resp) {
+            }
+        };
+        Api.shareToFriend(wxData, wxCallbacks);
+        Api.shareToTimeline(wxData, wxCallbacks);
+        Api.shareToWeibo(wxData, wxCallbacks);
+    });
+</script>
+
+<div style="display:none;">
+<script src="http://s11.cnzz.com/z_stat.php?id=1254418568&web_id=1254418568" language="JavaScript"></script>
+</div>
+
+</body>
+</html>
